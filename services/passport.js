@@ -43,31 +43,3 @@ passport.use(
     }
   )
 );
-
-passport.use(
-  new InstagramStrategy(
-    {
-      clientID: keys.instagramClientID,
-      clientSecret: keys.instagamClientSecret,
-      callbackURL:
-        "https://polar-castle-18613.herokuapp.com/auth/instagram/callback",
-    },
-    (accessToken, refreshToken, profile, done) => {
-      console.log("PROFILE", profile);
-      User.findOne({ googleId: profile.id })
-        .then((existingUser) => {
-          if (existingUser) {
-            done(null, existingUser);
-            return;
-          } else {
-            new User({
-              instgramId: profile.id,
-            })
-              .save()
-              .then((user) => done(null, user));
-          }
-        })
-        .catch((err) => console.error(err));
-    }
-  )
-);
