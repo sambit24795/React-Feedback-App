@@ -1,5 +1,6 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const InstagramStrategy = require("passport-instagram").Strategy;
 const mongoose = require("mongoose");
 
 const keys = require("../config/keys");
@@ -32,6 +33,33 @@ passport.use(
           } else {
             new User({
               googleId: profile.id,
+            })
+              .save()
+              .then((user) => done(null, user));
+          }
+        })
+        .catch((err) => console.error(err));
+    }
+  )
+);
+
+passport.use(
+  new InstagramStrategy(
+    {
+      clientID: keys.instagramClientID,
+      clientSecret: keys.instagamClientSecret,
+      callbackURL: "/auth/instagram/callback",
+    },
+    (accessToken, refreshToken, profile, done) => {
+      console.log("PROFILE", profile);
+      User.findOne({ googleId: profile.id })
+        .then((existingUser) => {
+          if (existingUser) {
+            done(null, existingUser);
+            return;
+          } else {
+            new User({
+              instgramId: profile.id,
             })
               .save()
               .then((user) => done(null, user));

@@ -16,7 +16,18 @@ module.exports = (app) => {
   });
 
   app.get("/api/current_user", (req, res) => {
-    console.log(req.user);
     res.send(req.user);
   });
+
+  app.get(
+    "/auth/instagram",
+    passport.authenticate("instagram", {
+      scope: ["user_profile", "user_media"],
+    }),
+    (req, res) => {
+      res.send("AUTHENTICATED");
+    }
+  );
+
+  app.get("/auth/instagram/callback", passport.authenticate("instagram"));
 };
