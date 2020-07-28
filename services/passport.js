@@ -23,9 +23,35 @@ passport.use(
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: "/auth/google/callback",
-      proxy: true,
     },
     (accessToken, refreshToken, profile, done) => {
+      User.findOne({ googleId: profile.id })
+        .then((existingUser) => {
+          if (existingUser) {
+            done(null, existingUser);
+            return;
+          } else {
+            new User({
+              googleId: profile.id,
+            })
+              .save()
+              .then((user) => done(null, user));
+          }
+        })
+        .catch((err) => console.error(err));
+    }
+  )
+);
+
+passport.use(
+  new InstagramStrategy(
+    {
+      clientID: keys.instagramClientID,
+      clientSecret: keys.instagamClientSecret,
+      callbackURL: "/auth/instagram/callback",
+    },
+    (accessToken, refreshToken, profile, done) => {
+      console.log("AGAFAFH");
       User.findOne({ googleId: profile.id })
         .then((existingUser) => {
           if (existingUser) {
