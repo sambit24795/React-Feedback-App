@@ -49,8 +49,8 @@ passport.use(
     {
       clientID: keys.instagramClientID,
       clientSecret: keys.instagamClientSecret,
-      callbackURL: "/auth/instagram/callback",
-      passReqToCallback: true
+      callbackURL:
+        "https://polar-castle-18613.herokuapp.com/auth/instagram/callback",
     },
     (accessToken, refreshToken, profile, done) => {
       console.log("PROFILE", profile);
