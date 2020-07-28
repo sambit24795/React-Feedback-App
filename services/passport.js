@@ -50,6 +50,7 @@ passport.use(
       clientID: keys.instagramClientID,
       clientSecret: keys.instagamClientSecret,
       callbackURL: "/auth/instagram/callback",
+      passReqToCallback: true
     },
     (accessToken, refreshToken, profile, done) => {
       console.log("PROFILE", profile);
