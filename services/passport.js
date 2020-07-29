@@ -24,48 +24,17 @@ passport.use(
       clientSecret: keys.googleClientSecret,
       callbackURL: "/auth/google/callback",
     },
-    (accessToken, refreshToken, profile, done) => {
-      User.findOne({ googleId: profile.id })
-        .then((existingUser) => {
-          if (existingUser) {
-            done(null, existingUser);
-            return;
-          } else {
-            new User({
-              googleId: profile.id,
-            })
-              .save()
-              .then((user) => done(null, user));
-          }
-        })
-        .catch((err) => console.error(err));
-    }
-  )
-);
+    async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({ googleId: profile.id });
 
-passport.use(
-  new InstagramStrategy(
-    {
-      clientID: keys.instagramClientID,
-      clientSecret: keys.instagamClientSecret,
-      callbackURL: "/auth/instagram/callback",
-    },
-    (accessToken, refreshToken, profile, done) => {
-      console.log("AGAFAFH");
-      User.findOne({ googleId: profile.id })
-        .then((existingUser) => {
-          if (existingUser) {
-            done(null, existingUser);
-            return;
-          } else {
-            new User({
-              googleId: profile.id,
-            })
-              .save()
-              .then((user) => done(null, user));
-          }
-        })
-        .catch((err) => console.error(err));
+      if (existingUser) {
+        return done(null, existingUser);
+      }
+      const user = await new User({
+        googleId: profile.id,
+      }).save();
+
+      done(null, user);
     }
   )
 );
