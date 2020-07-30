@@ -1,0 +1,15 @@
+.btn-small {
+  background-image: linear-gradient(
+    rgb(194, 135, 9),
+    rgb(214, 164, 57) 85%,
+    rgb(224, 164, 33)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.btn-small:hover {
+  color: #444;
+}
