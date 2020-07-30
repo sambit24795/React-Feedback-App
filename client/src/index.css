@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Istok+Web&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gudea&family=Trocchi&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Istok Web", sans-serif;
+  background-color: #f8f1e9;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Trocchi", serif;
+}
