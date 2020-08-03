@@ -1,0 +1,8 @@
+button.small-btn {
+  background: #322938;
+}
+
+button.small-btn:hover {
+  background-color: #89a194;
+  color: #444;
+}
