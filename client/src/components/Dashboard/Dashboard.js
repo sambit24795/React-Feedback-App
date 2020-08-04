@@ -22,15 +22,19 @@ const Dashboard = () => {
       return (
         <div className="card darken-1" key={survey._id}>
           <div className="card-content white-text">
-            <span className="card-title">{survey.title}</span>
+            <span className="card-title">
+              <h5>{survey.title}</h5>
+            </span>
             <p>{survey.body}</p>
             <p className="right">
               sent on: {new Date(survey.dateSent).toLocaleString()}
             </p>
           </div>
           <div className="card-action">
-            <a>yes: {survey.yes}</a>
-            <a>no: {survey.no}</a>
+            <p>
+              <a>Good: {survey.yes}</a>
+              <a className="right"> Can be better: {survey.no}</a>
+            </p>
           </div>
         </div>
       );
@@ -39,9 +43,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div>
-        {renderSurveys()}
-      </div>
+      <div>{renderSurveys()}</div>
       <div className="fixed-action-btn">
         <Link
           to="/surveys/new"
