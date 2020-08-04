@@ -62,7 +62,6 @@ module.exports = (app) => {
       .compact()
       .uniqBy("email", "surveyId")
       .each(({ surveyId, email, choice }) => {
-        console.log(choice);
         Survey.updateOne(
           {
             _id: surveyId,

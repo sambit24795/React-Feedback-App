@@ -12,7 +12,6 @@ const transporter = nodemailer.createTransport(
 );
 
 module.exports = ({ subject, recipients }, template) => {
-  console.log(recipients);
   return transporter.sendMail({
     to: recipients.map(({ email }) => email),
     from: "sambitnayakcse@gmail.com",

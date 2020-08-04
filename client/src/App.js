@@ -7,8 +7,6 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import SurveyNew from "./components/Surveys/Surveynew";
 import * as actions from "./store/actions/index";
 
-const Landing = () => <h2>Landing</h2>;
-
 const App = () => {
   const dispatch = useDispatch();
 
@@ -26,7 +24,7 @@ const App = () => {
         <div>
           <Header />
           <div className="container">
-            <Route exact path="/" component={Landing} />
+            <Route exact path="/" component={Dashboard} />
             <Route exact path="/surveys" component={Dashboard} />
             <Route exact path="/surveys/new" component={SurveyNew} />
           </div>
