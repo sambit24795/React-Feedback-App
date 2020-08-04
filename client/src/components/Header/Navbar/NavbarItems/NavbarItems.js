@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 import Payment from "../../../Payments/Payments";
 
 const NavbarItems = (props) => {
-  console.log(props.link, props.renderContent());
 
   const authEl = (
     <a

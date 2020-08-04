@@ -17,3 +17,10 @@ export const handletoken = (token) => {
     dispatch({ type: actionTypes.FETCH_USER, payload: resData.data });
   };
 };
+
+export const fetchSurveys = () => {
+  return async (dispatch) => {
+    const resData = await axios.get("/api/surveys");
+    dispatch({ type: actionTypes.FETCH_SURVEYS, payload: resData.data });
+  };
+};

@@ -27,3 +27,7 @@
     transform: rotate(360deg);
   }
 }
+
+.card {
+  background: #A14016;
+}

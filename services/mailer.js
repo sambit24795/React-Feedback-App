@@ -45,11 +45,10 @@ class Mailer extends helper.Mail {
         path: "/v3/mail/send",
         body: this.toJSON(),
       });
-      console.log("REQUEST", request);
       const response = await this.sendGridApi.API(request);
       return response;
     } catch (err) {
-      console.log(err);
+      console.error(err);
       return err;
     }
   }
