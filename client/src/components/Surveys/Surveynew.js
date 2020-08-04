@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { reduxform, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 
 import SurveyForm from "./SurveyForm/SurveyForm";
 import SurveyFormReview from "./SurveyFormReview/SurveyFormReview";
