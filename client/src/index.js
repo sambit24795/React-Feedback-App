@@ -10,16 +10,12 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import reducers from "./store/reducers";
 
-const composeEnhancers =
+/* const composeEnhancers =
   process.env.NODE_ENV === "development"
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-    : () => {};
+    : () => {}; */
 
-const store = createStore(
-  reducers,
-  {},
-  composeEnhancers(applyMiddleware(reduxThunk))
-);
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
   <React.StrictMode>
